@@ -1,0 +1,106 @@
+openapi: 3.0.3
+info:
+  title: Mirinda Site API
+  version: 1.0.0
+  description: Api for Mirinda Site
+paths:
+  /api/news/:
+    get:
+      operationId: news_list
+      tags:
+      - news
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/NewsList'
+          description: ''
+  /api/news/{slug}/:
+    get:
+      operationId: news_retrieve
+      parameters:
+      - in: path
+        name: slug
+        schema:
+          type: string
+        required: true
+      tags:
+      - news
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/NewsDetail'
+          description: ''
+components:
+  schemas:
+    NewsDetail:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        title:
+          type: string
+          title: Заголовок
+          maxLength: 150
+        short_description:
+          type: string
+          title: Краткое описание
+        full_description:
+          type: string
+          nullable: true
+          title: Полное описание
+        preview:
+          type: string
+          format: uri
+          title: Превью
+      required:
+      - pk
+      - preview
+      - short_description
+      - title
+    NewsList:
+      type: object
+      properties:
+        pk:
+          type: integer
+          readOnly: true
+          title: ID
+        title:
+          type: string
+          title: Заголовок
+          maxLength: 150
+        short_description:
+          type: string
+          title: Краткое описание
+        preview:
+          type: string
+          format: uri
+          title: Превью
+      required:
+      - pk
+      - preview
+      - short_description
+      - title
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid
