@@ -34,6 +34,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    "django.middleware.locale.LocaleMiddleware",
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -92,6 +93,9 @@ LANGUAGES = [
     ('uz', gettext('Узбекский'))
 ]
 
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'ru'
+LOCALE_PATHS = [BASE_DIR / 'locale']
+
 TIME_ZONE = 'Asia/Tashkent'
 
 USE_I18N = True
@@ -119,3 +123,5 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+CORS_ALLOW_ALL_ORIGINS = True
