@@ -3,6 +3,7 @@ from django.contrib.auth.admin import GroupAdmin as BaseGroupAdmin
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
 from django.contrib.auth.models import User, Group
 from django.db import models
+from modeltranslation.admin import TranslationAdmin
 from unfold.admin import ModelAdmin
 from unfold.contrib.forms.widgets import WysiwygWidget
 
@@ -13,7 +14,9 @@ from .models import (
     Category,
     Product,
     CompanyValue,
-    Gallery
+    Gallery,
+    UserRequest,
+    UserFeedbackNumber
 )
 
 admin.site.unregister(User)
@@ -31,7 +34,7 @@ class GroupAdmin(BaseGroupAdmin, ModelAdmin):
 
 
 @admin.register(News)
-class NewsAdmin(ModelAdmin):
+class NewsAdmin(ModelAdmin, TranslationAdmin):
     list_display = ['id', 'title', 'created_at']
     list_display_links = ['id', 'title']
     list_filter = ['created_at']
@@ -44,14 +47,14 @@ class NewsAdmin(ModelAdmin):
 
 
 @admin.register(PointOfSale)
-class PointOfSaleAdmin(ModelAdmin):
+class PointOfSaleAdmin(ModelAdmin, TranslationAdmin):
     list_display = ['pk', 'market_name', 'created_at']
     list_display_links = ['pk', 'market_name']
     list_filter = ['created_at']
 
 
 @admin.register(FAQ)
-class FAQAdmin(ModelAdmin):
+class FAQAdmin(ModelAdmin, TranslationAdmin):
     list_display = ['pk', 'question']
     list_display_links = ['pk', 'question']
 
@@ -63,7 +66,7 @@ class CategoryAdmin(ModelAdmin):
 
 
 @admin.register(Product)
-class ProductAdmin(ModelAdmin):
+class ProductAdmin(ModelAdmin, TranslationAdmin):
     list_display = ['pk', 'name', 'size', 'category', 'created_at']
     list_display_links = ['pk', 'name']
     list_filter = ['created_at', 'category']
@@ -71,7 +74,7 @@ class ProductAdmin(ModelAdmin):
 
 
 @admin.register(CompanyValue)
-class CompanyValueAdmin(ModelAdmin):
+class CompanyValueAdmin(ModelAdmin, TranslationAdmin):
     list_display = ['pk', 'title']
     list_display_links = ['pk', 'title']
 
@@ -79,3 +82,16 @@ class CompanyValueAdmin(ModelAdmin):
 @admin.register(Gallery)
 class GalleryAdmin(ModelAdmin):
     pass
+
+
+@admin.register(UserRequest)
+class UserRequestAdmin(ModelAdmin):
+    list_display = ['pk', 'first_name', 'phone_number']
+    list_display_links = ['pk', 'first_name']
+    list_filter = ['created_at']
+
+
+@admin.register(UserFeedbackNumber)
+class UserFeedbackNumberAdmin(ModelAdmin):
+    list_display = ['pk', 'phone_number']
+    list_display_links = ['pk', 'phone_number']

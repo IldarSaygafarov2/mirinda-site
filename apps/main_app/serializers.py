@@ -7,7 +7,9 @@ from .models import (
     Category,
     Product,
     CompanyValue,
-    Gallery
+    Gallery,
+    UserRequest,
+    UserFeedbackNumber
 )
 
 
@@ -59,3 +61,15 @@ class GallerySerializer(serializers.ModelSerializer):
     class Meta:
         model = Gallery
         fields = ['pk', 'image']
+
+
+class UserRequestSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserRequest
+        fields = ['pk', 'first_name', 'phone_number']
+
+
+class UserFeedbackNumberSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserFeedbackNumber
+        fields = ['pk', 'phone_number']

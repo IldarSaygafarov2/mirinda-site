@@ -11,4 +11,6 @@ urlpatterns = [
     path('products/<slug:slug>/', views.ProductDetail.as_view()),
     path('company/values/', views.CompanyValueList.as_view()),
     path('gallery/', views.GalleryList.as_view()),
+    path('request/create/', views.UserRequestCreateView.as_view()),
+    path('feedback/create/', views.UserFeedbackNumberCreate.as_view()),
 ]

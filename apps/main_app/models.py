@@ -98,3 +98,27 @@ class Gallery(models.Model):
     class Meta:
         verbose_name = 'Галлерея'
         verbose_name_plural = 'Галлерея'
+
+
+class UserRequest(models.Model):
+    phone_number = models.CharField(verbose_name='Номер телефона', max_length=15)
+    first_name = models.CharField(verbose_name='Имя', max_length=150)
+    created_at = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Дата отправки заявки')
+
+    def __str__(self):
+        return f'{self.first_name} {self.phone_number}'
+
+    class Meta:
+        verbose_name = 'Заявка пользователя'
+        verbose_name_plural = 'Заявки пользователей'
+
+
+class UserFeedbackNumber(models.Model):
+    phone_number = models.CharField(verbose_name='Номер телефона', max_length=15)
+
+    def __str__(self):
+        return self.phone_number
+
+    class Meta:
+        verbose_name = 'Номер пользователя для обратной связи'
+        verbose_name_plural = 'Номера пользователей для обратной связи'

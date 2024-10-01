@@ -13,14 +13,12 @@ class NewsTranslationOptions(TranslationOptions):
     )
 
 
-@translator.register(models.PointOfSale)
 class PointOfSaleTranslationOptions(TranslationOptions):
     fields = (
-        'description'
+        'description',
     )
 
 
-@translator.register(models.FAQ)
 class FAQTranslationOptions(TranslationOptions):
     fields = (
         'question',
@@ -28,7 +26,6 @@ class FAQTranslationOptions(TranslationOptions):
     )
 
 
-@translator.register(models.Product)
 class ProductTranslationOptions(TranslationOptions):
     fields = (
         'name',
@@ -37,7 +34,6 @@ class ProductTranslationOptions(TranslationOptions):
     )
 
 
-@translator.register(models.CompanyValue)
 class CompanyValueTranslationOptions(TranslationOptions):
     fields = (
         'title',

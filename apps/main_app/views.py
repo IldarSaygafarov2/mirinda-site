@@ -6,8 +6,11 @@ from .models import (
     FAQ,
     Product,
     CompanyValue,
-    Gallery
+    Gallery,
+    UserRequest,
+    UserFeedbackNumber
 )
+
 from .serializers import (
     NewsListSerializer,
     NewsDetailSerializer,
@@ -15,7 +18,9 @@ from .serializers import (
     FAQSerializer,
     ProductSerializer,
     CompanyValueSerializer,
-    GallerySerializer
+    GallerySerializer,
+    UserRequestSerializer,
+    UserFeedbackNumberSerializer
 )
 
 
@@ -63,3 +68,13 @@ class CompanyValueList(generics.ListAPIView):
 class GalleryList(generics.ListAPIView):
     queryset = Gallery.objects.all()
     serializer_class = GallerySerializer
+
+
+class UserRequestCreateView(generics.CreateAPIView):
+    queryset = UserRequest.objects.all()
+    serializer_class = UserRequestSerializer
+
+
+class UserFeedbackNumberCreate(generics.CreateAPIView):
+    queryset = UserFeedbackNumber.objects.all()
+    serializer_class = UserFeedbackNumberSerializer
