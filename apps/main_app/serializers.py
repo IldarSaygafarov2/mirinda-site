@@ -22,7 +22,8 @@ class NewsListSerializer(serializers.ModelSerializer):
 class NewsDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = News
-        fields = ['pk', 'title', 'short_description', 'full_description', 'preview']
+        fields = ['pk', 'title', 'short_description',
+                  'full_description', 'preview']
 
 
 class PointOfSaleSerializer(serializers.ModelSerializer):
@@ -48,7 +49,8 @@ class ProductSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Product
-        fields = ['pk', 'name', 'size', 'short_description', 'full_description', 'image', 'category']
+        fields = ['pk', 'name', 'size', 'short_description',
+                  'full_description', 'image', 'category']
 
 
 class CompanyValueSerializer(serializers.ModelSerializer):

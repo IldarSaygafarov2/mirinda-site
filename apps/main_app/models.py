@@ -5,10 +5,13 @@ class News(models.Model):
     """News model."""
     title = models.CharField(verbose_name='Заголовок', max_length=150)
     short_description = models.TextField(verbose_name='Краткое описание')
-    full_description = models.TextField(verbose_name='Полное описание', null=True)
+    full_description = models.TextField(
+        verbose_name='Полное описание', null=True)
     slug = models.SlugField(verbose_name='Короткая ссылка')
-    preview = models.ImageField(verbose_name='Превью', upload_to='news/previews/')
-    created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')
+    preview = models.ImageField(
+        verbose_name='Превью', upload_to='news/previews/')
+    created_at = models.DateTimeField(
+        auto_now_add=True, verbose_name='Дата создания')
 
     def __str__(self):
         return self.title
@@ -21,10 +24,13 @@ class News(models.Model):
 
 class PointOfSale(models.Model):
     """Point of sale model."""
-    market_name = models.CharField(verbose_name='Название магазина', max_length=100, unique=True)
+    market_name = models.CharField(
+        verbose_name='Название магазина', max_length=100, unique=True)
     image = models.ImageField(verbose_name='Фото', upload_to='markets/')
-    description = models.TextField(verbose_name='Уточнение', null=True, blank=True)
-    created_at = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
+    description = models.TextField(
+        verbose_name='Уточнение', null=True, blank=True)
+    created_at = models.DateTimeField(
+        verbose_name='Дата создания', auto_now_add=True)
 
     def __str__(self):
         return self.market_name
@@ -48,7 +54,8 @@ class FAQ(models.Model):
 
 
 class Product(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=150, unique=True)
+    name = models.CharField(verbose_name='Название',
+                            max_length=150, unique=True)
     size = models.PositiveIntegerField(verbose_name='Объем', default=0)
     slug = models.SlugField(verbose_name='Короткая ссылка')
     image = models.ImageField(verbose_name='Фото', upload_to='products/')
@@ -56,7 +63,8 @@ class Product(models.Model):
     full_description = models.TextField(verbose_name='Полное описание')
     category = models.ForeignKey("Category", on_delete=models.CASCADE, related_name='products',
                                  verbose_name='Категория')
-    created_at = models.DateTimeField(verbose_name='Дата добавления', auto_now_add=True, null=True, blank=True)
+    created_at = models.DateTimeField(
+        verbose_name='Дата добавления', auto_now_add=True, null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -67,7 +75,8 @@ class Product(models.Model):
 
 
 class Category(models.Model):
-    name = models.CharField(verbose_name='Название', max_length=150, unique=True)
+    name = models.CharField(verbose_name='Название',
+                            max_length=150, unique=True)
 
     def __str__(self):
         return self.name
@@ -78,7 +87,8 @@ class Category(models.Model):
 
 
 class CompanyValue(models.Model):
-    title = models.CharField(verbose_name='Заголовок', max_length=150, unique=True)
+    title = models.CharField(verbose_name='Заголовок',
+                             max_length=150, unique=True)
     description = models.TextField(verbose_name='Описание')
 
     def __str__(self):
@@ -101,9 +111,11 @@ class Gallery(models.Model):
 
 
 class UserRequest(models.Model):
-    phone_number = models.CharField(verbose_name='Номер телефона', max_length=15)
+    phone_number = models.CharField(
+        verbose_name='Номер телефона', max_length=15)
     first_name = models.CharField(verbose_name='Имя', max_length=150)
-    created_at = models.DateTimeField(auto_now_add=True, null=True, verbose_name='Дата отправки заявки')
+    created_at = models.DateTimeField(
+        auto_now_add=True, null=True, verbose_name='Дата отправки заявки')
 
     def __str__(self):
         return f'{self.first_name} {self.phone_number}'
@@ -114,7 +126,8 @@ class UserRequest(models.Model):
 
 
 class UserFeedbackNumber(models.Model):
-    phone_number = models.CharField(verbose_name='Номер телефона', max_length=15)
+    phone_number = models.CharField(
+        verbose_name='Номер телефона', max_length=15)
 
     def __str__(self):
         return self.phone_number
