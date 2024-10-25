@@ -4,9 +4,11 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-i+ysm-@1om@q!qh5xv4h251*&z96i4x@l!5^m@16dqcv95!535'
 
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'mirindaapi.pythonanywhere.com'
+]
 
 INSTALLED_APPS = [
     "modeltranslation",
