@@ -6,7 +6,12 @@ SECRET_KEY = "django-insecure-i+ysm-@1om@q!qh5xv4h251*&z96i4x@l!5^m@16dqcv95!535
 
 DEBUG = False
 
-ALLOWED_HOSTS = ["mirindaapi.pythonanywhere.com", "45.138.158.114"]
+ALLOWED_HOSTS = [
+    "mirindaapi.pythonanywhere.com",
+    "45.138.158.114",
+    "apimirinda.pythonanywhere.com",
+    "127.0.0.1",
+]
 
 INSTALLED_APPS = [
     "modeltranslation",
